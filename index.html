@@ -5,35 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="./css/main.css">    
     <title>Pares de cartas</title>
 </head>
 <body>
-    <h1>
-        Encuentra los pares
-    </h1>
-    <div style="display:flex; flex-direction: row;justify-content: center;align-items: center;">
-        <p class="bottom-labels">Encontrados: 
-            <span id="encontrados" class="numbers-bottom-labels">0</span>
-        </p>
-        <p  class="bottom-labels">Restan: 
-            <span id="faltantes" class="numbers-bottom-labels">6</span>
-        </p>
-        <p  class="bottom-labels">Tiempo: 
-            <span id="temporizador" class="numbers-bottom-labels">0</span>
-        </p>
-        <p  class="bottom-labels">Intentos: 
-            <span id="intentos" class="numbers-bottom-labels">0</span>
-        </p>
-    </div>
-    <div id="ganaste" class="container-winning-message">
-        <h2>✨✨✨¡HAS GANADO!✨✨✨<h2>
-    </div>
-   
-    <div id="pantalla" class="container-cartas" ></div>
-   
-
-    <script src="script.js"></script>
+    <header>
+        <h1>
+            Encuentra los pares
+        </h1>
+       
+    </header>
+    <main>       
+        <div style="display:flex; flex-direction: row;justify-content: center;align-items: center;">
+            <p class="bottom-labels">Encontrados: 
+                <span id="encontrados" class="numbers-bottom-labels">0</span>
+            </p>
+            <p  class="bottom-labels">Restan: 
+                <span id="faltantes" class="numbers-bottom-labels">6</span>
+            </p>
+            <p  class="bottom-labels">Tiempo: 
+                <span id="temporizador" class="numbers-bottom-labels">0</span>
+            </p>
+            <p  class="bottom-labels">Intentos: 
+                <span id="intentos" class="numbers-bottom-labels">0</span>
+            </p>
+        </div>
+        <div id="pantalla" class="container-cartas"></div>
+    </main>
+    <footer>
+        <div id="ganaste" class="container-winning-message">
+            <h2>✨✨✨¡HAS GANADO!✨✨✨<h2>
+        </div>
+    </footer>
+    <script src="./js/main.js"></script>
 </body>
 </html>

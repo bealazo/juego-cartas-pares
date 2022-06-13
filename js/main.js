@@ -1,3 +1,4 @@
+//variables
 var cartasArray = [1,2,3,4,5,6,1,2,3,4,5,6];
 var contadorVolteadas = 0;
 var carta1 = '';
@@ -8,7 +9,10 @@ var tiempo = 0;
 var temporizador ;
 var intentos = 0;
 var clic = false;
-function carta(x,y,w,h,imagenFrente,imagenAtras){
+
+//funciones
+
+function card(x,y,w,h,imagenFrente,imagenAtras){
     this.x = x;
     this.y = y;
     this.w = w;
@@ -16,7 +20,7 @@ function carta(x,y,w,h,imagenFrente,imagenAtras){
     this.imagenAtras = imagenAtras;
     this.imagenFrente = imagenFrente;
     this.template = `   
-    <div onclick="voltear(this)" class="flip-cartaTemporal ctrlCartas"  carta="`+this.imagenAtras+`" 
+    <div onclick="turnCard(this)" class="flip-cartaTemporal ctrlCartas"  card="`+this.imagenAtras+`" 
         style="position:absolute; left: `+this.x+`px;top: `+this.y+`px; margin: 10px; width:`+this.w+`px; height:`+this.h+`px;">
         <div class="flip-cartaTemporal-inner">
             <div class="flip-cartaTemporal-front">
@@ -29,26 +33,18 @@ function carta(x,y,w,h,imagenFrente,imagenAtras){
     </div> 
    `;
 }
-
-window.onload = function() {
-    cargaCartas();
-    temporizador();
-};
-
-function desordenarArrays(arrayX){
+const unscrambleArrays=(arrayX)=>{
     let arrayReacomodado = arrayX.sort(function(){return Math.random() -0.5});
     return arrayReacomodado;
 }
-
-function temporizador(){
+const setTime=()=>{
     temporizador = setInterval(() => {
         tiempo++
         document.getElementById('temporizador').innerHTML = tiempo;
     }, 1000);
 }
-
-function cargaCartas(){
-    let cartasTemporal = desordenarArrays(cartasArray);
+const loadCards=()=>{
+    let cartasTemporal = unscrambleArrays(cartasArray);
     let modificador = 10;
     for(let i=0;i<12;i++){
         let lugar = document.getElementById("pantalla"); 
@@ -56,17 +52,16 @@ function cargaCartas(){
         if(i < 4){ y = 30; }
         if(i < 8 && i >3){ y = 150; }
         if(i < 12 && i >7){ y = 270; }
-        let cartaTemporal = new carta(modificador ,y ,100 ,100 ,'imagenes/back.jpg','imagenes/'+cartasTemporal[i]+'.jpg');
+        let cartaTemporal = new card(modificador ,y ,100 ,100 ,'../images/back.jpg','../images/'+cartasTemporal[i]+'.jpg');
         lugar.insertAdjacentHTML("beforeend", cartaTemporal.template);
         modificador = modificador + 120;
     }
 } 
-
-function voltear(e){
+const turnCard=(e)=>{
     e.setAttribute('onclick',"");
     e.classList.add('volteada');
     if(contadorVolteadas < 2){
-        let imagenX = e.getAttribute('carta');
+        let imagenX = e.getAttribute('card');
         if(contadorVolteadas == 0){
             carta1 = imagenX;
         }
@@ -83,7 +78,7 @@ function voltear(e){
                 if(carta1 == carta2){
                     let chequeo = document.getElementsByClassName('ctrlCartas');
                     for (let cartaX of chequeo) {
-                        let imagenCarta = cartaX.getAttribute('carta');
+                        let imagenCarta = cartaX.getAttribute('card');
                         if(imagenCarta == carta1){
                             cartaX.setAttribute("style", "display: none;");
                             encontradas = encontradas + .5;
@@ -100,7 +95,7 @@ function voltear(e){
                     let volteadas = document.getElementsByClassName('volteada');
                     let cantidadVolteadas = volteadas.length - 1;
                     for (let index = cantidadVolteadas; index >= 0; index--) {
-                        volteadas[index].setAttribute("onclick","voltear(this);")
+                        volteadas[index].setAttribute("onclick","turnCard(this);")
                         volteadas[index].classList.remove("volteada");
                     }
                 }
@@ -112,3 +107,16 @@ function voltear(e){
         }
     }
 }
+
+//eventos
+window.onload = function() {
+    loadCards();
+    setTime();
+};
+
+
+
+
+
+
+
