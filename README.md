@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Juego de pares
 
@@ -23,3 +24,7 @@ Juego de encontrar pares de cartas iguales. Una vez emparejadas todas las cartas
 
 - [@bealazo](https://github.com/bealazo)
 
+=======
+Juego de encontrar pares de cartas, desarrollado con html, css y javascript.
+Para ver el prototipo funcional, ingrese aquí: https://bealazo.github.io/juego-cartas-pares/
+>>>>>>> afb5131147cb1f4bdc5e57e846cbe6ccf5f3039d
